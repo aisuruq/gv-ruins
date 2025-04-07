@@ -12,11 +12,10 @@ export default defineConfig({
     strictPort: true,
     port: 5173,
     proxy: {
-      '/api' : {
+      '/api': {
         target: 'http://fast-api:8000',
         changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/api/, '')
-      }
-    }
-  }
+      },
+    },
+  },
 })

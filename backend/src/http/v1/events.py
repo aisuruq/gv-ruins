@@ -8,6 +8,6 @@ router = APIRouter()
 def get_events():
     return events_sheet.get_all_events()
 
-@router.get("/events/upcoming")
+@router.get("/upcoming")
 def get_upcoming_events():
     return events_sheet.get_upcoming_events()
