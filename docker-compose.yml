@@ -1,0 +1,33 @@
+version: '3.8'
+
+networks: 
+  dev:
+
+services:
+  frontend-node:
+    build:
+      context: ./frontend
+      dockerfile: docker/Dockerfile
+    environment:
+      CHOKIDAR_USEPOLLING: true
+      WATCHPACK_POLLING: true
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    ports:
+      - "5137:5137"
+    networks:
+      - dev
+
+  fast-api: 
+    build:
+      context: ./api
+      dockerfile: docker/Dockerfile
+    volumes:
+      - ./api:/app
+    environment:
+      FRONTEND_URL: http://frontend-node:5173
+    ports:
+      - "8000:8000"
+    networks:
+      - dev
