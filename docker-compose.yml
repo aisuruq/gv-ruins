@@ -21,10 +21,10 @@ services:
 
   fast-api: 
     build:
-      context: ./api
+      context: ./backend
       dockerfile: docker/Dockerfile
     volumes:
-      - ./api:/app
+      - ./backend:/app
     environment:
       FRONTEND_URL: http://frontend-node:5173
     ports:
