@@ -15,7 +15,7 @@ services:
       - ./frontend:/app
       - /app/node_modules
     ports:
-      - "5137:5137"
+      - "5173:5173"
     networks:
       - dev
 
@@ -26,8 +26,15 @@ services:
     volumes:
       - ./backend:/app
     environment:
+      CREDENTIALS_GOOGLE: /run/secrets/credentials
       FRONTEND_URL: http://frontend-node:5173
     ports:
       - "8000:8000"
+    secrets:
+      - credentials
     networks:
       - dev
+
+secrets:
+    credentials:
+        file: ./backend/credentials
