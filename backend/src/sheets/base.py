@@ -1,6 +1,7 @@
 import gspread
-import os 
+import os
 from google.oauth2.service_account import Credentials
+
 
 class GoogleSheet:
     def __init__(self, sheet_name: str, worksheet_name: str):
@@ -11,12 +12,14 @@ class GoogleSheet:
 
     def _auth(self):
         base_dir = os.path.dirname(os.path.abspath(__file__))
-        credentials_path = os.path.join(base_dir,'..', '..', 'credentials.json')
+        credentials_path = os.path.join(base_dir, "..", "..", "credentials.json")
         scopes = [
-            'https://www.googleapis.com/auth/spreadsheets',
-            'https://www.googleapis.com/auth/drive'
+            "https://www.googleapis.com/auth/spreadsheets",
+            "https://www.googleapis.com/auth/drive",
         ]
-        credentials = Credentials.from_service_account_file(credentials_path, scopes=scopes)
+        credentials = Credentials.from_service_account_file(
+            credentials_path, scopes=scopes
+        )
         return gspread.authorize(credentials)
 
     def get_all(self):

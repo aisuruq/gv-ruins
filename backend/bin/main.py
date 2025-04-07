@@ -2,10 +2,11 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from configuration.server import Server
 
+
 def create_app(_=None) -> FastAPI:
-    
+
     app = FastAPI()
-    
+
     app.add_middleware(
         CORSMiddleware,
         allow_origins=["*"],
@@ -13,7 +14,5 @@ def create_app(_=None) -> FastAPI:
         allow_methods=["*"],
         allow_headers=["*"],
     )
-    
+
     return Server(app).get_app()
-    
-    
