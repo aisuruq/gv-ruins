@@ -1,0 +1,38 @@
+
+
+.header {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .background-container {
+    width: 100%;
+    height: 100%;
+    position: relative;
+  }
+  
+  .background-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .title-container {
+    position: relative;
+    top: -70%;
+    left: 1%;
+    width: 100%;
+    padding: 0 20px;
+  }
+  
+  .main-title {
+    color: white;
+    font-size: clamp(54px, 5vw, 4rem);
+    font-family: 'MV-Skifer', serif;
+    font-weight: 400;
+    text-shadow: 2px 2px 8px rgba(0,0,0,0.7);
+    margin: 0;
+    line-height: 1.2;
+  }
