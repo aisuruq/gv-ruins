@@ -1,6 +1,7 @@
 from pydantic import BaseModel
 from datetime import datetime
 
+
 class EventBase(BaseModel):
     name: str
     datetime: datetime
@@ -12,8 +13,9 @@ class EventBase(BaseModel):
     description: str
     details: str
 
+
 class Event(EventBase):
     id: int
 
-class CreateEvents(Event):
-    ...
+
+class CreateEvents(Event): ...

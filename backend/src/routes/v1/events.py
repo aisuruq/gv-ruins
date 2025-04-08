@@ -9,13 +9,16 @@ from typing import List
 
 router = APIRouter()
 
-@router.get("/upcoming")
+
+@router.get("/upcoming_sheets")
 def get_upcoming_events():
     return events_sheet.get_upcoming_events()
+
 
 @router.post("/sync-events")
 def sync_events(session: Session = Depends(db_helper.session_getter)):
     return sync_events_with_db(session)
+
 
 @router.get("/list", response_model=List[event_sh])
 def get_events(session: Session = Depends(db_helper.session_getter)):

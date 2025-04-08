@@ -18,4 +18,4 @@ class Event(IdIntPkMixin, Base):
     description: Mapped[str] = mapped_column(Text, nullable=False)
     details: Mapped[str] = mapped_column(Text, nullable=True)
 
-    participants = relationship("Participant", back_populates="event")
+    participants = relationship("Participant", back_populates="event", cascade="all, delete-orphan")
