@@ -23,7 +23,7 @@ class EventsSheet(GoogleSheet):
         def parse_datetime(event):
             try:
                 event_dt = datetime.strptime(
-                    f"{event['date']} {event['time']}", "%d.%m.%Y %H:%M"
+                    f"{event['Дата']} {event['Время']}", "%d.%m.%Y %H:%M"
                 )
                 return event_dt
             except Exception:

@@ -1,6 +1,8 @@
 from fastapi import APIRouter
 from typing import List
 from fastapi import APIRouter, HTTPException, status
+from configuration.db_helper import db_helper
+from src.repositories.participants_repository import register_participant
 from src.schemas.participants import CreateParticipants
 from src.sheets.participants import participants_sheet
 
@@ -15,20 +17,11 @@ def get_events():
 @router.post("/register")
 def register_to_event(participants: CreateParticipants):
     try:
-        participants_sheet.register(
-            participants.name,
-            participants.surname,
-            participants.patronymic,
-            participants.phone,
-            participants.tg_username,
-            participants.event_id,
-            participants.comment,
-            participants.payment,
-            participants.prepayment,
-        )
+        session = db_helper.session_getter()
+        register_participant(session, participants)
         return {"status": "success", "message": "Регистрация прошла успешно"}
     except Exception as e:
         raise HTTPException(
             status.HTTP_422_UNPROCESSABLE_ENTITY,
-            detail="Ошибка валидации данных. Пожалуйста, проверьте правильность заполнения формы.",
+            detail=f"Ошибка валидации данных. Пожалуйста, проверьте правильность заполнения формы {e}.",
         )

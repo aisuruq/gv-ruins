@@ -22,12 +22,14 @@ class ParticipantsSheet(GoogleSheet):
 
     def register(
         self,
+        id: int,
         name: str,
         surname: str,
         patronymic: str,
         phone: str,
         tg_username: str,
         event_id: int,
+        event_name: str,
         comment: str,
         payment: int,
         prepayment: int,
@@ -38,19 +40,18 @@ class ParticipantsSheet(GoogleSheet):
                 detail="Пользователь уже зарегистрирован на это мероприятия",
             )
 
-        new_id = self.next_id()
         created_at = datetime.now().strftime("%d.%m.%Y %H:%M:%S")
         balance_of_payment = max(payment - prepayment, 0)
 
         self.append(
             [
-                new_id,
+                id,
                 name,
                 surname,
                 patronymic,
                 phone,
                 tg_username,
-                event_id,
+                event_name,
                 comment,
                 payment,
                 prepayment,

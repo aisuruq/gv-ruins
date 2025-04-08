@@ -26,15 +26,37 @@ services:
     volumes:
       - ./backend:/app
     environment:
-      CREDENTIALS_GOOGLE: /run/secrets/credentials
+      DB_USER: app
+      DB_HOST: api-postgres
+      DB_PASSWORD: app
+      DB_NAME: app
+      CREDENTIALS_GOOGLE: /run/secrets/credentials.json
       FRONTEND_URL: http://frontend-node:5173
     ports:
       - "8000:8000"
+    depends_on:
+      - api-postgres
     secrets:
       - credentials
     networks:
       - dev
 
+  api-postgres:
+    image: postgres:17.4-alpine
+    environment:
+      POSTGRES_USER: app
+      POSTGRES_PASSWORD: app
+      POSTGRES_DB: app
+    volumes:
+      - rs-database:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+    networks:
+      - dev
+
 secrets:
     credentials:
-        file: ./backend/credentials
+        file: ./backend/credentials.json
+
+volumes:
+  rs-database:
