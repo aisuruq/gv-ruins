@@ -1,18 +1,18 @@
 import gspread
 import os
 from google.oauth2.service_account import Credentials
-
+from configuration.settings import Settings, settings
 
 class GoogleSheet:
-    def __init__(self, sheet_name: str, worksheet_name: str):
+    def __init__(self, sheet_name: str, worksheet_name: str, settings: Settings):
         self.sheet_name = sheet_name
         self.worksheet_name = worksheet_name
+        self.settings = settings
         self.client = self._auth()
         self.sheet = self.client.open(sheet_name).worksheet(worksheet_name)
 
     def _auth(self):
-        base_dir = os.path.dirname(os.path.abspath(__file__))
-        credentials_path = os.path.join(base_dir, "..", "credentials.json")
+        credentials_path = self.settings.db.key_sheets
         scopes = [
             "https://www.googleapis.com/auth/spreadsheets",
             "https://www.googleapis.com/auth/drive",

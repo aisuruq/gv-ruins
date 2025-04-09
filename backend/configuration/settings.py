@@ -1,3 +1,4 @@
+from pathlib import Path
 from pydantic import BaseModel
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
@@ -10,6 +11,7 @@ class DatabaseSettings(BaseModel):
     echo: bool = False
     max_overflow: int = 20
     pool_size: int = 50
+    key_sheets: Path
 
     @property
     def url(self) -> str:
