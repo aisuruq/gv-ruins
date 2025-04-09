@@ -1,58 +1,55 @@
-version: '3.8'
+version: "3.8"
 
 networks:
   dev:
 
 services:
-  frontend-node:
+  gateway:
     build:
-      context: ./frontend
-      dockerfile: docker/prod/Dockerfile
-    environment:
-      CHOKIDAR_USEPOLLING: "true"
-      WATCHPACK_POLLING: "true"
-    volumes:
-      - ./frontend:/app
-      - /app/node_modules
+      context: gateway/docker/nginx
     ports:
-      - "5173:5173"  
-    networks:
-      - dev
-    command: ["npm", "run", "build"]  
-
-  nginx:
-    image: nginx:latest
-    volumes:
-      - ./nginx.conf:/etc/nginx/nginx.conf
-      - ./frontend/dist:/usr/share/nginx/html
-    ports:
-      - "80:80"
-      - "443:443"  #
-    networks:
-      - dev
+      - "8082:8082"
+      - "8081:8081"
     depends_on:
-      - frontend-node
       - fast-api
+      - frontend-node
+    container_name: "nginx"
+    volumes:
+      - frontend-dist:/app:ro
+    networks:
+      - dev
 
-  fast-api: 
+  fast-api:
     build:
       context: ./backend
       dockerfile: docker/Dockerfile
     volumes:
       - ./backend:/app
     environment:
-      DB_USER: app
       DB_HOST: api-postgres
+      DB_USER: app
       DB_PASSWORD: app
       DB_NAME: app
       CREDENTIALS_GOOGLE: /run/secrets/credentials.json
-      FRONTEND_URL: http://frontend-node:5173
+      FRONTEND_URL: http://localhost:8082
     ports:
-      - "8000:8000"
+      - "8080:8080"
     depends_on:
       - api-postgres
-    secrets:
-      - credentials
+    networks:
+      - dev
+
+  frontend-node:
+    build:
+      context: ./frontend
+      dockerfile: docker/prod/Dockerfile
+    environment:
+      CHOKIDAR_USEPOLLING: true
+      WATCHPACK_POLLING: true
+    volumes:
+      - ./frontend:/app
+      - frontend-dist:/app/dist
+    tty: true
     networks:
       - dev
 
@@ -75,4 +72,4 @@ secrets:
 
 volumes:
   rs-database:
-
+  frontend-dist:
