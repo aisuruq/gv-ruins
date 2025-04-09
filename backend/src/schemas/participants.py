@@ -17,12 +17,13 @@ class Participants(BaseModel):
 class CreateParticipants(Participants):
     event_id: int
     event_name: str
+    people_count: int
 
-    @field_validator("phone")
-    def validate_phone(cls, v):
-        if not re.fullmatch(r"\+7\d{10}", v):
-            raise ValueError("Номер телефона должен быть в формате +7XXXXXXXXXX")
-        return v
+    # @field_validator("phone")
+    # def validate_phone(cls, v):
+    #     if not re.fullmatch(r"\+7\d{10}", v):
+    #         raise ValueError("Номер телефона должен быть в формате +7XXXXXXXXXX")
+    #     return v
 
     # @field_validator("prepayment")
     # def validate_prepayment(cls, v, values):

@@ -9,7 +9,7 @@ function OurEventsProvider({ children, query }) {
   const [data, setData] = useState([])
 
   useEffect(() => {
-    fetch('/api/v1/events/upcoming')
+    fetch('/api/v1/events/list')
       .then((response) => {
         if (!response.ok) {
           throw new Error('Ошибка при загрузке данных')
