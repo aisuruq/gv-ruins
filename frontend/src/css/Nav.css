@@ -1,0 +1,18 @@
+.navbar {
+  padding-right: 20px;
+  position: absolute;
+  z-index: 10;
+}
+
+.logo-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  height: 10px;
+  width: auto;
+}

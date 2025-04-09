@@ -1,0 +1,16 @@
+.section {
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  background-color: #2e2929;
+  height: 480px;
+}
+.content {
+  margin-top: 5%;
+  margin-left: 5%;
+}
+.span {
+  position: relative;
+  top: 10%;
+  opacity: 0.5;
+}
