@@ -22,7 +22,6 @@ class ParticipantsSheet(GoogleSheet):
 
     def register(
         self,
-        id: int,
         name: str,
         surname: str,
         patronymic: str,
@@ -33,19 +32,21 @@ class ParticipantsSheet(GoogleSheet):
         comment: str,
         payment: int,
         prepayment: int,
+        people_count: int,
     ) -> dict:
         if self.is_registered(tg_username, event_id):
             raise HTTPException(
                 status.HTTP_409_CONFLICT,
                 detail="Пользователь уже зарегистрирован на это мероприятия",
             )
-
+            
+        new_id = self.next_id()
         created_at = datetime.now().strftime("%d.%m.%Y %H:%M:%S")
         balance_of_payment = max(payment - prepayment, 0)
 
         self.append(
             [
-                id,
+                new_id,
                 name,
                 surname,
                 patronymic,
@@ -55,6 +56,7 @@ class ParticipantsSheet(GoogleSheet):
                 comment,
                 payment,
                 prepayment,
+                people_count,
                 balance_of_payment,
                 created_at,
             ]

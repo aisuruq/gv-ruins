@@ -13,7 +13,10 @@ def register_participant(session: Session, data: CreateParticipants) -> dict:
     if not event:
         raise HTTPException(status.HTTP_404_NOT_FOUND, detail="Мероприятие не найдено")
 
-    participant = Participant(**data.model_dump())
+    participant = Participant(**data.model_dump(exclude={"event_name"}))
+
+    participant.event_name = event.name
+
     session.add(participant)
     try:
         session.commit()
@@ -25,7 +28,6 @@ def register_participant(session: Session, data: CreateParticipants) -> dict:
         )
 
     participants_sheet.register(
-        id=data.id,
         name=data.name,
         surname=data.surname,
         patronymic=data.patronymic,
@@ -36,6 +38,7 @@ def register_participant(session: Session, data: CreateParticipants) -> dict:
         comment=data.comment or "",
         payment=data.payment,
         prepayment=data.prepayment,
+        people_count=data.people_count,
     )
 
     return {"status": "success", "message": "Участник успешно зарегистрирован"}

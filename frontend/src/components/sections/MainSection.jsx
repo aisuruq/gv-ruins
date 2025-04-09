@@ -1,5 +1,5 @@
 import React from 'react'
-import FON from '../../assets/images/fon.jpg'
+import photo from '../../assets/images/main.png'
 import '../../css/Head.css'
 import Nav from '../ui/Nav'
 const MainSection = () => {
@@ -7,7 +7,11 @@ const MainSection = () => {
     <header className="header">
       <Nav />
       <div className="background-container">
-        <img src={FON} alt="Фоновое изображение" className="background-image" />
+        <img
+          src={photo}
+          alt="Фоновое изображение"
+          className="background-image"
+        />
       </div>
       <div className="title-container">
         <h1 className="main-title">

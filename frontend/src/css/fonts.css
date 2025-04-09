@@ -1,35 +1,29 @@
 @font-face {
-    font-family: 'Vollkorn';
-    src: url('../assets/fonts/Vollkorn-Regular.woff2') format('woff2'),
-         url('../assets/fonts/Vollkorn-Regular.woff') format('woff');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-  }
-  
-  @font-face {
-    font-family: 'Vollkorn';
-    src: url('../assets/fonts/Vollkorn-Bold.woff2') format('woff2'),
-         url('../assets/fonts/Vollkorn-Bold.woff') format('woff');
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
-  }
+  font-family: 'Vollkorn';
+  src: url('./assets/fonts/volk/Vollkorn/Vollkorn.woff2') format('woff2'),
+    url('./assets/fonts/volk/Volkorn/Vollkorn.woff') format('woff');
+  font-style: normal;
+  font-display: swap;
+}
 
-  @font-face {
-    font-family: 'MV-Skifer';
-    src: url('../assets/fonts/MVSkifer-Regular.woff2') format('woff2'),
-         url('../assets/fonts/MVSkifer-Regular.woff') format('woff');
-    font-weight: 400;
-    font-style: normal;
-    font-display: swap;
-  }
-  
-  @font-face {
-    font-family: 'MV-Skifer';
-    src: url('../assets/fonts/MVSkifer-Bold.woff2') format('woff2'),
-         url('../assets/fonts/MVSkifer-Bold.woff') format('woff');
-    font-weight: 700;
-    font-style: normal;
-    font-display: swap;
-  }
+@font-face {
+  font-family: 'MV-Skifer';
+  src: url('//fonts/skiper/MV-SKIFER/MV-SKIFER.woff2') format('woff2'),
+    url('/fonts/skiper/MV-SKIFER/MV-SKIFER.woff') format('woff');
+  font-style: normal;
+  font-weight: normal;
+  font-display: swap;
+}
+
+p {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+h2 {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+h3 {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+span {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}

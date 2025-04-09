@@ -3,8 +3,9 @@ import '../../css/Nav.css'
 import '../../css/fonts.css'
 import MainSection from '../../components/sections/MainSection'
 import AboutSection from '../../components/sections/AboutSection'
-import CardsSection from '../../components/sections/CardsSection'
+import CardsSection from '../../components/sections/CardSection/CardsSection'
 import OurEventsProvider from '../OurEvents/OurEventsProvider'
+import Footer from '../../components/sections/Footer/Footer'
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
         <OurEventsProvider>
           <CardsSection />
         </OurEventsProvider>
+        <Footer />
       </main>
     </section>
   )

@@ -1,0 +1,84 @@
+dialog {
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+}
+h2 {
+  color: #250f00;
+  font-weight: 100;
+  align-self: flex-start;
+  padding: 10px 10px 0 20px;
+  margin-bottom: 15px;
+}
+input {
+  width: 90%;
+  height: 44px;
+  border: none;
+  border-top: 1px solid #78788033;
+  background-color: #fff;
+  color: #2e2929;
+  border-radius: 12px;
+  margin-top: 0.5rem;
+}
+input::placeholder {
+  color: #2e2929;
+  opacity: 0.65;
+  padding: 10px;
+}
+.form-page {
+  display: flex;
+  flex-direction: column;
+  width: 60%;
+  min-height: 400px;
+  background-color: #f1e5d7;
+}
+.form-block {
+  width: 85%;
+  height: 70%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+}
+.form-input,
+.form-comment {
+  width: 100%;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+.form-input {
+  min-height: 330px;
+  border-radius: 12px;
+  background-color: #fff;
+}
+input[type='submit'] {
+  width: 245px;
+  height: 50px;
+  background-color: #875543;
+  color: white;
+  border-radius: 12px;
+  align-self: flex-start;
+  font-size: 20px;
+  font-weight: 400;
+}
+.form-comment {
+  margin: 20px 0 50px 0;
+}
+textarea {
+  width: 100%;
+  border: none;
+  height: 56px;
+  border-radius: 12px;
+  padding: 10px 0 0 15px;
+  background-color: #fff;
+  color: #2e2929;
+}
+form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+dialog span {
+  color: #2e2929;
+  opacity: 0.5;
+  font-size: 12px;
+  margin-left: 20%;
+}

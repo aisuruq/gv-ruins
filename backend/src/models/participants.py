@@ -18,6 +18,8 @@ class Participant(IdIntPkMixin, Base):
 
     event_id: Mapped[int] = mapped_column(ForeignKey("events.id"), nullable=False)
     event = relationship("Event", back_populates="participants")
-    # payment: [int]
-    # prepayment: Mapped[Float] = mapped_column(default=0.0)
+    payment: Mapped[int]
+    prepayment: Mapped[float] = mapped_column(default=0.0)
+    people_count: Mapped[int] = mapped_column(default=0)
+    
     # balance_of_payment: Mapped[Float] = mapped_column(default=0.0)

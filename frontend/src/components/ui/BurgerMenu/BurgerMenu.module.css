@@ -1,0 +1,43 @@
+.wrapper {
+  position: relative;
+}
+
+.burger {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 20px;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.burger span {
+  height: 5px;
+  width: 10px;
+  background-color: white;
+}
+
+.menu {
+  position: absolute;
+  top: 40px;
+  left: 0;
+  background-color: white;
+  padding: 10px;
+  border: 1px solid black;
+}
+
+.menu ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.menu li {
+  margin-bottom: 10px;
+}
+
+.menu li:last-child {
+  margin-bottom: 0;
+}

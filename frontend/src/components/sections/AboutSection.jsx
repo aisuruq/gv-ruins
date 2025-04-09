@@ -11,6 +11,7 @@ const Nav = () => {
           <br />
           теперь вы можете заглянуть в самое сердце истории.
         </p>
+        <img src="src/assets/images/step.png" className="shag" />
         <h2 className="transition-title">
           Прогуляйтесь <br />с нами...
         </h2>
